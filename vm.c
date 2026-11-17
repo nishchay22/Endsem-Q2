@@ -385,6 +385,19 @@ copyout(pde_t *pgdir, uint va, void *p, uint len)
   return 0;
 }
 
+int
+va2pa(int va)
+{
+    struct proc *p = myproc();
+  pte_t *pte;
+
+  pte = walkpgdir(p->pgdir, (void*)va, 0);
+  if(!pte || !(*pte & PTE_P) || !(*pte & PTE_U))
+      return -1;
+
+  return PTE_ADDR(*pte) | (va & 0xFFF);
+}
+
 //PAGEBREAK!
 // Blank page.
 //PAGEBREAK!
