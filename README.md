@@ -6,3 +6,4 @@ Changes made:
 - syscall.h, syscall.c, sysproc.c, user.h, usys.S: wired up freepages and va2pa system calls.
 - memtest.c: user program testing freepages(), sbrk(10*4096), va2pa() on a global variable and 0x7FFFFFFF, and comparing parent/child physical addresses and free page counts across fork() and wait().
 - Makefile: added _memtest to UPROGS.
+- Nishchay, 2401MC22, everyone got the same set.
